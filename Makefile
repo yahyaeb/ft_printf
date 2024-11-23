@@ -6,7 +6,7 @@
 #    By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/22 15:13:25 by yel-bouk          #+#    #+#              #
-#    Updated: 2024/11/22 16:08:36 by yel-bouk         ###   ########.fr        #
+#    Updated: 2024/11/23 18:02:30 by yel-bouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,19 +16,19 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g
 RM = rm -f
 
-SRCS = ./srcs/libftprintf.c \
-		./srcs/number.c \
-		./tests/main.c
-		
+SRCS = srcs/ftprintf.c srcs/letters.c srcs/number.c
 OBJS	= $(SRCS:.c=.o)
+
+TEST_SRCS = ./tests/main.c
+TEST_OBJS = $(TEST_SRCS:.c=.o)
 
 all:	$(NAME)
 
 $(NAME):	$(OBJS)
 			ar rcs $(NAME) $(OBJS)
 
-$(EXEC): $(NAME) ./srcs/main.c
-	$(CC) $(CFLAGS) -o $(EXEC) ./srcs/main.c $(NAME)
+$(EXEC): $(NAME) ./tests/main.c
+	$(CC) $(CFLAGS) -o $(EXEC) ./tests/main.c $(NAME)
 
 
 clean:

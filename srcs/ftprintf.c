@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.c                                      :+:      :+:    :+:   */
+/*   ftprintf.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:43:03 by yel-bouk          #+#    #+#             */
-/*   Updated: 2024/11/22 15:56:25 by yel-bouk         ###   ########.fr       */
+/*   Updated: 2024/11/23 17:53:16 by yel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 //va_arg,
 // va_copy,
 // va_end.
+
+
 int ft_printf(const char *format, ...)
 {
     va_list args;
@@ -36,10 +38,43 @@ int ft_printf(const char *format, ...)
             ptr+=2;
             count++;
         }
+        else if(*ptr == '%' && (*(ptr + 1) == 'i' || *(ptr + 1) == 'd'))
+        {
+            ft_putnbr(va_arg(args, int));
+            ptr+=2;
+            count++;
+        }
         else if (*ptr == '%' && *(ptr + 1) == 's')
         {
-            s = va_arg(args, char*);
-            ft_putstr(s);
+            s = (va_arg(args, char*));
+            if(!s)
+                ft_putstr("(null)");
+            else
+                ft_putstr(s);
+            ptr+=2;
+            count++;   
+        }
+        else if (*ptr == '%' && *(ptr + 1) == 'c')
+        {
+            ft_putchar((char)va_arg(args, int));
+            ptr+=2;
+            count++;   
+        }
+        else if (*ptr == '%' && *(ptr + 1) == 'p') // The `void *` pointer argument is printed in hexadecimal format.
+        {
+            ft_print_pointer((va_arg(args, void *)));
+            ptr+=2;
+            count++;   
+        }
+        else if (*ptr == '%' && *(ptr + 1) == 'x') // hexadecimal (base 16) lowercase format.
+        {
+            ft_putnbr_hex_lower((unsigned int)va_arg(args, unsigned int));
+            ptr+=2;
+            count++;
+        }
+        else if (*ptr == '%' && *(ptr + 1) == 'X') // The `X` pointer argument is printed in hexadecimal format.
+        {
+            ft_putnbr_hex_upper((unsigned int)(va_arg(args, unsigned int)));
             ptr+=2;
             count++;   
         }
