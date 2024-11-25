@@ -6,7 +6,7 @@
 /*   By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 17:44:20 by yel-bouk          #+#    #+#             */
-/*   Updated: 2024/11/25 12:00:30 by yel-bouk         ###   ########.fr       */
+/*   Updated: 2024/11/25 16:28:50 by yel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_putstr(char *s)
 
 	if (!s)
 		return ;
-	
 	i = 0;
 	while (s[i])
 	{
@@ -26,20 +25,22 @@ void	ft_putstr(char *s)
 		i++;
 	}
 }
+
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-int ft_print_pointer(uintptr_t num)
+int	ft_print_pointer(uintptr_t num)
 {
-    char *hex_base = "0123456789abcdef";
-    int count = 0;
+	char	*hex_base;
+	int		count;
 
-    if (num >= 16)
-        count += ft_print_pointer(num / 16);
-    write(1, &hex_base[num % 16], 1); 
-    count++;
-
-    return count;
+	hex_base = "0123456789abcdef";
+	count = 0;
+	if (num >= 16)
+		count += ft_print_pointer(num / 16);
+	write(1, &hex_base[num % 16], 1);
+	count++;
+	return (count);
 }
