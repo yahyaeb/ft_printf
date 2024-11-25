@@ -1,45 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   letters.c                                          :+:      :+:    :+:   */
+/*   handlers_numbers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 17:44:20 by yel-bouk          #+#    #+#             */
-/*   Updated: 2024/11/25 12:00:30 by yel-bouk         ###   ########.fr       */
+/*   Created: 2024/11/24 12:14:26 by yel-bouk          #+#    #+#             */
+/*   Updated: 2024/11/25 11:37:04 by yel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	ft_putstr(char *s)
+// handle unsgined ints
+int handle_unsigned(unsigned int num) 
 {
-	int	i;
-
-	if (!s)
-		return ;
-	
-	i = 0;
-	while (s[i])
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
-}
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
+    return ft_putnbr_unsigned(num);
 }
 
-int ft_print_pointer(uintptr_t num)
+// handle integers;
+int handle_integers(int num)
 {
-    char *hex_base = "0123456789abcdef";
-    int count = 0;
-
-    if (num >= 16)
-        count += ft_print_pointer(num / 16);
-    write(1, &hex_base[num % 16], 1); 
-    count++;
-
-    return count;
+    return ft_putnbr(num);
 }
+
+
