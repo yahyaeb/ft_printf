@@ -6,12 +6,11 @@
 #    By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/22 15:13:25 by yel-bouk          #+#    #+#              #
-#    Updated: 2024/11/25 12:05:35 by yel-bouk         ###   ########.fr        #
+#    Updated: 2024/11/26 07:22:16 by yel-bouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-EXEC = a.out
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g
 RM = rm -f
@@ -19,23 +18,17 @@ RM = rm -f
 SRCS = srcs/ftprintf.c srcs/handlers_chars.c srcs/handlers_numbers.c srcs/letters.c srcs/number.c srcs/utility.c
 OBJS	= $(SRCS:.c=.o)
 
-TEST_SRCS = ./tests/main.c
-TEST_OBJS = $(TEST_SRCS:.c=.o)
 
 all:	$(NAME)
 
 $(NAME):	$(OBJS)
 			ar rcs $(NAME) $(OBJS)
 
-$(EXEC): $(NAME) ./tests/main.c
-	$(CC) $(CFLAGS) -o $(EXEC) ./tests/main.c -L. -lftprintf
-
-
 clean:
 			$(RM) $(OBJS)
 
 fclean:		clean
-			$(RM) $(NAME) $(EXEC)
+			$(RM) $(NAME) 
 
 re:			fclean all
 
