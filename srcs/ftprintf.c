@@ -6,7 +6,7 @@
 /*   By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:43:03 by yel-bouk          #+#    #+#             */
-/*   Updated: 2024/11/25 12:46:16 by yel-bouk         ###   ########.fr       */
+/*   Updated: 2024/12/17 21:30:53 by yel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	ft_format_specifier(va_list *args, char format)
 
 	count = 0;
 	if (format == 'u')
-		return (count += handle_unsigned(va_arg(*args, unsigned int)));
+		return (count += ft_putnbr_unsigned(va_arg(*args, unsigned int)));
 	else if (format == 'd' || format == 'i')
-		return (count += handle_integers(va_arg(*args, int)));
+		return (count += ft_putnbr(va_arg(*args, int)));
 	else if (format == 's')
 		return (count += handle_strings(va_arg(*args, char *)));
 	else if (format == 'c')
@@ -28,9 +28,9 @@ int	ft_format_specifier(va_list *args, char format)
 	else if (format == 'p')
 		return (count += handle_pointers(va_arg(*args, void *)));
 	else if (format == 'x')
-		return (count += handle_hex_lower(va_arg(*args, unsigned int)));
+		return (count += ft_putnbr_hex_lower(va_arg(*args, unsigned int)));
 	else if (format == 'X')
-		return (count += handle_hex_upper(va_arg(*args, unsigned int)));
+		return (count += ft_putnbr_hex_upper(va_arg(*args, unsigned int)));
 	else if (format == '%')
 		return (count += write(1, "%", 1));
 	else

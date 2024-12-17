@@ -6,7 +6,7 @@
 #    By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/22 15:13:25 by yel-bouk          #+#    #+#              #
-#    Updated: 2024/11/26 07:22:16 by yel-bouk         ###   ########.fr        #
+#    Updated: 2024/12/17 21:33:00 by yel-bouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g
 RM = rm -f
 
-SRCS = srcs/ftprintf.c srcs/handlers_chars.c srcs/handlers_numbers.c srcs/letters.c srcs/number.c srcs/utility.c
+SRCS = srcs/ftprintf.c srcs/handlers_chars.c srcs/letters.c srcs/number.c srcs/utility.c
 OBJS	= $(SRCS:.c=.o)
 
 

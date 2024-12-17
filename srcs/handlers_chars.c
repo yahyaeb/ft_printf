@@ -6,7 +6,7 @@
 /*   By: yel-bouk <yel-bouk@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:46:19 by yel-bouk          #+#    #+#             */
-/*   Updated: 2024/11/25 16:24:13 by yel-bouk         ###   ########.fr       */
+/*   Updated: 2024/12/17 21:30:48 by yel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,6 @@ int	handle_char(char c)
 	ft_putchar(c);
 	return (1);
 }
-
-int	handle_hex_lower(unsigned int num)
-{
-	return (ft_putnbr_hex_lower(num));
-}
-
-int	handle_hex_upper(unsigned int num)
-{
-	return (ft_putnbr_hex_upper(num));
-}
-
 int	handle_pointers(void *ptr)
 {
 	if (!ptr)
